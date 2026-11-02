@@ -1,17 +1,97 @@
 <!doctype html>
 <html lang="ca">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#11131a">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0b0e">
 <title>L'últim concert de l'Ensorra't · Expedient</title>
 <style>
-:root{--bg:#101219;--panel:#191d27;--panel2:#222837;--line:#343c4d;--ink:#f4f1e9;--muted:#a8afbd;--gold:#d5b879;--red:#bd6670;--green:#83b79b;--blue:#8da8d4;--radius:18px}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#252b38 0,#101219 56%);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}header{padding:20px 18px 12px;text-align:left;max-width:900px;margin:auto}.eyebrow{color:var(--gold);font-size:.7rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.brand{font:500 clamp(2rem,8vw,3.2rem)/1.02 Georgia,serif;margin:7px 0}.subtitle{color:var(--muted);margin:0}.wrap{max-width:900px;margin:auto;padding:10px 14px 110px}.panel{background:rgba(25,29,39,.97);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:12px 0;box-shadow:0 12px 34px #0002}.panel h2{font:500 1.55rem Georgia,serif;margin:0 0 10px}.panel h3{margin:0 0 6px;font-size:1.02rem}.muted{color:var(--muted)}.small{font-size:.86rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.field{display:block;margin:10px 0 5px;font-size:.9rem;font-weight:700}input,select,textarea{width:100%;padding:13px;border-radius:11px;border:1px solid #485166;background:#10141d;color:var(--ink);margin:5px 0 10px}textarea{resize:vertical}.btn{border:0;border-radius:12px;background:var(--gold);color:#201c14;font-weight:800;padding:13px 16px;width:100%;margin-top:8px}.btn.secondary{background:var(--panel2);border:1px solid #4b566b;color:var(--ink)}.btn.danger{background:#683b46;color:white}.btn:disabled{opacity:.5;cursor:not-allowed}.notice{background:#2a2b2d;border-left:4px solid var(--gold);padding:11px 13px;border-radius:9px;color:#e7e1d5;margin:12px 0}.hidden{display:none!important}.status{font-size:.88rem;color:var(--muted);margin-top:10px;overflow-wrap:anywhere}.tag{display:inline-block;border:1px solid #626b7d;border-radius:30px;padding:3px 9px;color:var(--gold);font-size:.75rem;font-weight:800}.phasebar{display:flex;gap:6px;overflow:auto;padding:4px 0 12px}.phasepill{flex:0 0 auto;border:1px solid var(--line);border-radius:30px;padding:7px 11px;color:var(--muted);font-size:.75rem}.phasepill.active{background:#3b3528;border-color:var(--gold);color:var(--gold)}.doclist{display:grid;gap:9px}.doc{display:flex;align-items:center;gap:12px;background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:13px;text-align:left;color:var(--ink);width:100%}.doc .num{display:grid;place-items:center;flex:0 0 40px;height:40px;border-radius:11px;background:#34394a;color:var(--gold);font-weight:900;font-size:.78rem}.doc .docmeta{min-width:0;flex:1}.doc strong{display:block;font-size:.93rem}.doc small{display:block;color:var(--muted);margin-top:2px}.suspect{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--panel2)}.suspect .name{font:1.3rem Georgia,serif;color:var(--gold)}.suspect p{margin:6px 0;color:#d8dbe1;font-size:.9rem}
-.tabs{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#11151df2;backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom));overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tabinner{width:max-content;min-width:100%;display:flex;justify-content:flex-start;gap:5px}
-.tab{flex:0 0 auto;min-width:82px;border:0;background:transparent;color:var(--muted);padding:7px 5px;border-radius:11px;font-size:.72rem}
-.tab span{display:block;font-size:1.2rem;margin-bottom:2px}.tab.active{background:#2b3040;color:var(--gold)}
-.view{display:none}.view.active{display:block}.docviewer{position:fixed;inset:0;z-index:30;background:#0b0d12f5;overflow:auto;padding:18px 14px 35px}.docpaper{max-width:720px;margin:35px auto;background:#eee9dc;color:#28251f;border-radius:5px;padding:clamp(22px,6vw,46px);box-shadow:0 25px 80px #0009;min-height:65vh}.docpaper .eyebrow{color:#816b3e}.docpaper h2{font:500 1.7rem/1.2 Georgia,serif;margin:8px 0 18px}.docpaper p{white-space:pre-line;line-height:1.75;color:#34312a}.close{position:fixed;top:12px;right:14px;border:1px solid #6b7280;border-radius:30px;background:#202632;color:white;padding:9px 14px}.checkline{display:flex;gap:9px;align-items:flex-start;color:var(--muted);font-size:.86rem;margin:12px 0}.checkline input{width:auto;margin-top:5px}.footnote{text-align:center;color:#777f8d;font-size:.76rem;margin:26px 0}.hostbox{border:1px solid #8c7448;background:#28251f}.result{border:1px solid #547b65;background:#1c2b25;border-radius:13px;padding:14px;margin-top:12px}.result h3{color:var(--green)}@media(min-width:700px){.wrap{padding-left:22px;padding-right:22px}.doclist{grid-template-columns:1fr 1fr}}
-.phase-intro-screen{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(180deg,#080a10aa,#080a10f2 58%),radial-gradient(ellipse at 50% 12%,#596078 0,#202737 38%,#0c1018 78%);padding:18px 14px calc(22px + env(safe-area-inset-bottom));overflow:auto}.phase-intro-card{width:min(760px,100%);border:1px solid #596174;border-radius:22px;background:linear-gradient(155deg,#202735f7,#141923f8);box-shadow:0 25px 90px #000b;padding:clamp(22px,5vw,38px);margin:auto;position:relative;overflow:hidden}.phase-intro-card:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#8b7046,#e0c68e,#8b7046)}.phase-intro-kicker{color:var(--gold);font-size:.72rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase}.phase-intro-title{font:500 clamp(2.1rem,8vw,3.5rem)/1.02 Georgia,serif;margin:12px 0 6px}.phase-intro-place{color:#c2c8d3;font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}.phase-intro-rule{width:54px;height:2px;background:var(--gold);margin:18px 0}.phase-intro-copy p{font:1.03rem/1.75 Georgia,serif;color:#e5e4e0;margin:0 0 14px}.phase-intro-question{border-left:3px solid var(--gold);padding:10px 14px;margin:20px 0;color:#e5d5b2;font-size:.92rem}.phase-intro-actions{display:grid;gap:8px;margin-top:22px}.phase-intro-actions .btn{margin:0}.intro-archive{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}.intro-archive-list{display:grid;gap:7px;margin-top:9px}.intro-archive-list button{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:10px 12px;text-align:left}.intro-archive-list button:disabled{opacity:.45}.phase-new{color:var(--gold);font-size:.68rem;font-weight:900;letter-spacing:.08em;margin-left:7px}@media(min-width:700px){.phase-intro-screen{align-items:center}}
+:root{
+ --bg:#0b0b0e;--panel:#151519;--panel2:#1d1c21;--line:#39343a;
+ --ink:#f2eee7;--muted:#aaa2a0;--gold:#c5a66b;--red:#a83d46;
+ --green:#83b79b;--blue:#8da8d4;--radius:13px;
+ --shadow:0 18px 48px #0009;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% -12%,#34262a 0,#171519 35%,#0b0b0e 75%);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E")}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{position:relative;z-index:1;padding:clamp(28px,7vw,64px) 20px 26px;text-align:left;max-width:900px;margin:auto;border-bottom:1px solid #5b4140}
+header:after{content:"";position:absolute;right:20px;bottom:24px;width:74px;height:2px;background:var(--red);box-shadow:0 0 18px #a83d4680}
+.eyebrow{color:var(--gold);font-size:.68rem;font-weight:850;letter-spacing:.22em;text-transform:uppercase}
+.brand{font:500 clamp(2.5rem,10vw,4.6rem)/.94 Georgia,serif;letter-spacing:-.045em;margin:13px 0 12px;text-shadow:0 5px 24px #000}
+.subtitle{color:#c2b9b1;margin:0;font:italic 1rem Georgia,serif;letter-spacing:.02em}
+.wrap{position:relative;z-index:1;max-width:900px;margin:auto;padding:14px 14px 112px}
+.panel{background:linear-gradient(145deg,#1a191eF5,#121216F8);border:1px solid var(--line);border-radius:var(--radius);padding:19px;margin:13px 0;box-shadow:var(--shadow);position:relative}
+.panel:before{content:"";position:absolute;top:0;left:18px;width:34px;height:2px;background:var(--gold);opacity:.75}
+.panel h2{font:500 1.65rem/1.15 Georgia,serif;margin:3px 0 12px;letter-spacing:-.02em}
+.panel h3{margin:0 0 7px;font-size:.96rem;letter-spacing:.025em}
+.muted{color:var(--muted)}.small{font-size:.86rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.field{display:block;margin:10px 0 5px;font-size:.86rem;font-weight:750;letter-spacing:.025em}
+input,select,textarea{width:100%;padding:13px;border-radius:7px;border:1px solid #51464a;background:#0e0d11;color:var(--ink);margin:5px 0 10px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px #c5a66b22}
+textarea{resize:vertical}
+.btn{border:1px solid #d2b77e;border-radius:6px;background:linear-gradient(135deg,#d1b77f,#ad8c52);color:#17130e;font-weight:850;letter-spacing:.035em;padding:13px 16px;width:100%;margin-top:8px;text-transform:uppercase;font-size:.82rem;box-shadow:0 5px 18px #0005;transition:filter .2s,transform .2s}
+.btn:hover{filter:brightness(1.09);transform:translateY(-1px)}
+.btn.secondary{background:#201e23;border:1px solid #5a5053;color:#eee7dc;box-shadow:none}
+.btn.danger{background:#68343c;color:white;border-color:#a85b62}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.notice{background:linear-gradient(90deg,#34272a,#211e22);border-left:3px solid var(--red);padding:12px 14px;border-radius:3px;color:#e7ded7;margin:13px 0}
+.hidden{display:none!important}
+.status{font-size:.88rem;color:var(--muted);margin-top:10px;overflow-wrap:anywhere}
+.tag{display:inline-block;border:1px solid #806c4a;border-radius:3px;padding:3px 8px;color:#d8bd86;font-size:.67rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
+.phasebar{display:flex;gap:6px;overflow:auto;padding:5px 0 13px;scrollbar-width:thin}
+.phasepill{flex:0 0 auto;border:1px solid #484047;border-radius:3px;padding:7px 10px;color:var(--muted);font-size:.72rem;letter-spacing:.025em}
+.phasepill.active{background:#38282a;border-color:var(--red);color:#f0c7bd;box-shadow:inset 0 -2px var(--red)}
+.doclist{display:grid;gap:9px}
+.doc{display:flex;align-items:center;gap:12px;background:linear-gradient(110deg,#252127,#1a191e);border:1px solid #484047;border-radius:5px;padding:13px;text-align:left;color:var(--ink);width:100%;transition:border-color .2s,background .2s}
+.doc:hover{border-color:var(--gold);background:#29232a}
+.doc .num{display:grid;place-items:center;flex:0 0 42px;height:44px;border-radius:3px;background:#3b292c;color:#d7b779;font:700 .8rem Georgia,serif;border:1px solid #69454a}
+.doc .docmeta{min-width:0;flex:1}
+.doc strong{display:block;font-size:.9rem;letter-spacing:.01em}
+.doc small{display:block;color:var(--muted);margin-top:3px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.suspect{border:1px solid #494047;border-radius:5px;padding:16px;background:linear-gradient(145deg,#252127,#18171c);position:relative;overflow:hidden}
+.suspect:before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--red)}
+.suspect .name{font:1.45rem Georgia,serif;color:var(--gold);letter-spacing:-.02em}
+.suspect p{margin:7px 0 12px;color:#d8d2ce;font-size:.88rem}
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#0e0d11f5;backdrop-filter:blur(16px);border-top:1px solid #51444a;padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}
+.tabinner{width:min(900px,100%);display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.tab{border:0;background:transparent;color:#938b8c;padding:7px 2px;border-radius:5px;font-size:.68rem;letter-spacing:.04em;text-transform:uppercase}
+.tab span{display:block;font-size:1.2rem;margin-bottom:2px;color:#b69a68}
+.tab.active{background:#292126;color:#e7c98d;box-shadow:inset 0 -2px var(--red)}
+.view{display:none}.view.active{display:block}
+.docviewer{position:fixed;inset:0;z-index:30;background:#08080bf7;overflow:auto;padding:18px 14px 35px;backdrop-filter:blur(8px)}
+.docpaper{max-width:720px;margin:35px auto;background:#e9e3d6;color:#28231f;border-radius:2px;padding:clamp(22px,6vw,46px);box-shadow:0 25px 90px #000c;min-height:65vh;position:relative}
+.docpaper:before{content:"DOCUMENT CONFIDENCIAL · ENSORRA'T";display:block;border-bottom:1px solid #a69b87;padding-bottom:10px;font:700 .62rem system-ui;letter-spacing:.17em;color:#75684f}
+.docpaper .eyebrow{color:#816b3e}.docpaper h2{font:500 1.7rem/1.2 Georgia,serif;margin:15px 0 18px;border-bottom:1px solid #c8bdab;padding-bottom:13px}
+.docpaper p{white-space:pre-line;line-height:1.8;color:#34312a}
+.close{position:fixed;top:12px;right:14px;z-index:2;border:1px solid #7b6b6a;border-radius:3px;background:#211c20;color:white;padding:9px 14px;text-transform:uppercase;font-size:.74rem;letter-spacing:.08em}
+.checkline{display:flex;gap:9px;align-items:flex-start;color:var(--muted);font-size:.86rem;margin:12px 0}
+.checkline input{width:auto;margin-top:5px}
+.footnote{text-align:center;color:#777174;font-size:.72rem;margin:28px 0;letter-spacing:.04em}
+.hostbox{border:1px solid #866e47;background:linear-gradient(145deg,#302820,#1d1a1b)}
+.result{border:1px solid #547b65;background:#1c2b25;border-radius:5px;padding:14px;margin-top:12px}
+.result h3{color:var(--green)}
+@media(min-width:700px){.wrap{padding-left:22px;padding-right:22px}.doclist{grid-template-columns:1fr 1fr}}
+
+.phase-intro-screen{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(180deg,#09070ab0,#09070af7 60%),radial-gradient(ellipse at 50% 10%,#63383d 0,#292027 38%,#0b0b0e 80%);padding:18px 14px calc(22px + env(safe-area-inset-bottom));overflow:auto}
+.phase-intro-card{width:min(760px,100%);border:1px solid #685056;border-radius:5px;background:linear-gradient(155deg,#242025fa,#121115fa);box-shadow:0 25px 100px #000e;padding:clamp(22px,5vw,38px);margin:auto;position:relative;overflow:hidden}
+.phase-intro-card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#6f333b,#d3b575,#6f333b)}
+.phase-intro-kicker{color:var(--gold);font-size:.68rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase}
+.phase-intro-title{font:500 clamp(2.3rem,9vw,4rem)/.98 Georgia,serif;margin:14px 0 8px;letter-spacing:-.035em}
+.phase-intro-place{color:#c2b8b2;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
+.phase-intro-rule{width:58px;height:2px;background:var(--red);margin:18px 0}
+.phase-intro-copy p{font:1.04rem/1.8 Georgia,serif;color:#e5dfda;margin:0 0 14px}
+.phase-intro-question{border-left:3px solid var(--red);padding:11px 14px;margin:20px 0;color:#e5d5b2;background:#241c20;font-size:.91rem}
+.phase-intro-actions{display:grid;gap:8px;margin-top:22px}
+.phase-intro-actions .btn{margin:0}
+.intro-archive{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+.intro-archive-list{display:grid;gap:7px;margin-top:9px}
+.intro-archive-list button{background:#211d22;border:1px solid #494047;color:var(--ink);border-radius:4px;padding:10px 12px;text-align:left}
+.intro-archive-list button:disabled{opacity:.45}
+.phase-new{color:var(--gold);font-size:.65rem;font-weight:900;letter-spacing:.1em;margin-left:7px}
+@media(min-width:700px){.phase-intro-screen{align-items:center}}
 </style></head>
 <body>
 <header><div class="eyebrow">Expedient d'investigació · Blanes</div><h1 class="brand">L'últim concert<br>de l'Ensorra't</h1><p class="subtitle">La mort de Júlia Soler · Una investigació compartida</p></header>
@@ -29,8 +109,7 @@
 <div class="suspect"><div class="name">Toni</div><p>Tècnic de so i llums. Factures irregulars i una incidència elèctrica que no va comunicar.</p><span class="tag">Mòbil aparent: ocultar una estafa</span></div>
 </div><p class="muted small">Els quatre tenen secrets i motius aparents. Cal distingir el responsable de la mort de qui va ocultar la deficiència tècnica.</p></div></section>
 <section class="view" id="view-accuse"><div class="panel"><div class="eyebrow">Fase final · Resolució col·lectiva</div><h2>El grup té una teoria?</h2><p class="muted">La resolució només la pot enviar l'organitzador després del debat. La resta de participants veurà aquesta pantalla en mode d'espera.</p><div id="participantWait" class="notice">Esperant que l'organitzador obri la fase final i registri la resposta del grup.</div>
-<div id="resolutionFormWrap" class="hidden"><form id="resolutionForm">
-<label class="field" for="answerSuspect">1. Qui va matar Júlia?</label><select id="answerSuspect" required><option value="">Tria un sospitós</option><option>Laia</option><option>Marc</option><option>Nora</option><option>Toni</option></select>
+<div id="resolutionFormWrap" class="hidden"><form id="resolutionForm"><label class="field" for="answerSuspect">1. Qui va matar Júlia?</label><select id="answerSuspect" required><option value="">Tria un sospitós</option><option>Laia</option><option>Marc</option><option>Nora</option><option>Toni</option></select>
 <label class="field" for="answerMethod">2. Quin mètode va provocar la mort?</label><select id="answerMethod" required><option value="">Tria una resposta</option><option>Intoxicació a través de la infusió</option><option>Descàrrega elèctrica provocada</option><option>Manipulació de la medicació</option><option>Una altra causa</option></select>
 <label class="field" for="answerMotive">3. Quin era el veritable mòbil?</label><select id="answerMotive" required><option value="">Tria el mòbil</option><option>Evitar que Júlia revelés una informació comprometedora sobre la seva vida privada</option><option>Venjança per la ruptura sentimental</option><option>Aconseguir el lloc de vocalista principal</option><option>Obsessionar-se amb la víctima</option><option>Evitar que es descobrís una estafa</option></select>
 <label class="field" for="answerProof">4. Quina és la prova més determinant?</label><select id="answerProof" required><option value="">Tria una prova</option><option>Registre d'accessos i fotografia de Nora</option><option>Informe d'autòpsia i toxicologia</option><option>Objecte vinculat a Marc i marcador U-17</option><option>Factures i informe tècnic</option></select>
@@ -59,8 +138,7 @@ const phases=[
   "La notícia de la mort de Júlia ha arribat als membres d’Eclipsi i al personal del festival. Les primeres declaracions no coincideixen del tot: cadascú recorda una discussió, un moviment o una absència diferent.",
   "Laia, Marc, Nora i Toni tenien motius per estar enfadats amb Júlia. Alguns reconeixen els conflictes; d’altres ometen detalls que només apareixen quan es comparen els testimonis.",
   "Cap d’ells no queda descartat. La investigació ha de separar els ressentiments reals de les oportunitats concretes i comprovar què feia cadascú durant els minuts previs al col·lapse."
- ],'Qui tenia un motiu? I, sobretot, qui podia haver actuat sense ser vist?' ],
- ['proves','Les proves','Els registres, les fotografies i els informes tècnics permeten contrastar les coartades.','Reconstrucció horària · Zona de camerinos i escenari',[
+ ],'Qui tenia un motiu? I, sobretot, qui podia haver actuat sense ser vist?' ],['proves','Les proves','Els registres, les fotografies i els informes tècnics permeten contrastar les coartades.','Reconstrucció horària · Zona de camerinos i escenari',[
   "La revisió de l’espai i dels materials recuperats aporta una imatge més precisa de la nit. Apareixen registres d’accés, fotografies preses entre bastidors, missatges i documents relacionats amb l’organització del concert.",
   "Algunes coartades comencen a trontollar. Una fotografia aparentment casual adquireix importància quan es compara amb els horaris; un avís tècnic revela que una incidència ja era coneguda abans de l’actuació.",
   "Però les proves no expliquen encara per què Júlia va morir. Cal distingir l’incident elèctric de qualsevol altra cosa que pogués haver passat al camerino."
@@ -109,6 +187,5 @@ Mòbil: ${data.motive}
 Prova: ${data.decisive_evidence}
 
 Vols enviar la resposta consensuada? No es podrà modificar.`))return;const b=$('submitResolutionBtn');b.disabled=true;$('resolutionStatus').textContent='Enviant la resolució…';try{await api('enviar-resolucio',{game_id:c.game_id,host_token:c.host_token,...data});$('resolutionStatus').textContent='Resolució registrada.';await refreshState()}catch(err){$('resolutionStatus').textContent='No s’ha pogut enviar: '+err.message;b.disabled=false}});
-// Reentrada a una sessió existent al mateix navegador.
 (function resume(){const c=creds();if(c.game_id&&c.player_id&&c.player_token){$('connectPanel').classList.add('hidden');$('lobbyPanel').classList.remove('hidden');$('lobbyCode').textContent='Sessió recuperada';startPolling()}})();
 </script></body></html>
