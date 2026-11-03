@@ -892,8 +892,15 @@ function renderInterrogations(s){
   const row=document.createElement('div');row.className='interrogation-row';
   const b=document.createElement('button');b.type='button';b.className='btn secondary';b.textContent=q[0]+' · '+q[2];
   const done=(s.interrogation_answers||[]).find(a=>a.question_id===q[0]);
-  if(done){b.disabled=true;b.textContent+=' ✓';const note=document.createElement('span');note.className='muted small';note.textContent='Resposta disponible a les respostes compartides.';row.append(b,note);}
-  else{b.onclick=async()=>{b.disabled=true;$('interrogationStatus').textContent='Registrant la pregunta…';const c=creds();try{await api('consultar-interrogatori',{game_id:c.game_id,player_id:c.player_id,player_token:c.player_token,question_id:q[0],suspect:activeInterrogationSuspect,question:q[2],answer:q[3]});$('interrogationStatus').textContent='Resposta compartida amb tots els participants.';await refreshState();}catch(e){b.disabled=false;$('interrogationStatus').textContent=e.message;}};row.append(b);}
+  if(done){
+   b.disabled=true;b.textContent+=' ✓';
+   const answer=document.createElement('div');answer.className='doc';answer.textContent=done.answer;
+   row.append(b,answer);
+  }
+  else{
+   b.onclick=async()=>{b.disabled=true;$('interrogationStatus').textContent='Registrant la pregunta…';const c=creds();try{await api('consultar-interrogatori',{game_id:c.game_id,player_id:c.player_id,player_token:c.player_token,question_id:q[0],suspect:activeInterrogationSuspect,question:q[2],answer:q[3]});$('interrogationStatus').textContent='Resposta compartida amb tots els participants.';await refreshState();}catch(e){b.disabled=false;$('interrogationStatus').textContent=e.message;}};
+   row.append(b);
+  }
   box.append(row);
  });
  panel.append(box);
