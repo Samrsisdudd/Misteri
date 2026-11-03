@@ -384,6 +384,14 @@ textarea{resize:vertical}
 
    <p>Després del concert de l’Ensorra’t a la Platja de la Vila, Júlia és trobada sense vida a la zona de camerinos. La nota trobada a la seva bossa i les versions dels quatre sospitosos obren una investigació per mort sospitosa.</p>
    <div class="notice">Objectiu: reconstruir què va passar, qui va provocar la mort i quin era el motiu.</div>
+   <div class="panel" style="margin:14px 0">
+    <h3>Les persones de l’entorn de Júlia</h3>
+    <p><strong>Laia</strong> — artista vinculada al concert. Tenia una relació professional amb Júlia i hi havia certa rivalitat artística entre elles.</p>
+    <p><strong>Nora</strong> — col·laboradora de producció. Havia tingut accés a documents de Júlia i la seva relació s’havia refredat.</p>
+    <p><strong>Toni</strong> — responsable del suport tècnic. Coordinava el material de so i llums i les incidències tècniques.</p>
+    <p><strong>Marc</strong> — company de producció i músic del projecte. Participava en la coordinació de la producció i en la gestió econòmica.</p>
+    <p class="muted small">Aquestes quatre persones formaven part de l’entorn de Júlia durant el concert. De moment, no sabem si alguna té relació amb la seva mort.</p>
+   </div>
    <h3>Documents desbloquejats</h3>
    <div id="caseDocs" class="doclist"></div>
    <div class="intro-archive">
@@ -708,6 +716,12 @@ function openPhaseIntro(key,archive=false){
   el.textContent=t;
   return el;
  }));
+ if(key==='accident'){
+  const cast=document.createElement('div');
+  cast.className='notice';
+  cast.innerHTML='<strong>Les persones de l’entorn de Júlia</strong><p><strong>Laia:</strong> artista vinculada al concert; mantenia una rivalitat artística amb Júlia.</p><p><strong>Nora:</strong> col·laboradora de producció amb accés a alguns documents.</p><p><strong>Toni:</strong> responsable del suport tècnic, del so i de les llums.</p><p><strong>Marc:</strong> company de producció i músic del projecte, implicat en la coordinació i la gestió econòmica.</p><p class="small">Aquestes quatre persones formaven part de l’entorn de Júlia. Encara no sabem si alguna té relació amb la seva mort.</p>';
+  $('phaseIntroCopy').append(cast);
+ }
 
  $('phaseIntroQuestion').textContent=p[5];
  $('continuePhaseBtn').textContent=key==='resolucio'?'Anar a la deliberació':'Obrir l’expedient';
