@@ -172,7 +172,7 @@ textarea{resize:vertical}
  padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom));
  display:flex;justify-content:center
 }
-.tabinner{width:min(900px,100%);display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.tabinner{width:min(900px,100%);display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
 .tab{
  border:0;background:transparent;color:#938b8c;padding:7px 2px;
  border-radius:5px;font-size:.68rem;letter-spacing:.04em;text-transform:uppercase
@@ -198,7 +198,7 @@ textarea{resize:vertical}
  font:700 .62rem system-ui;letter-spacing:.17em;color:#75684f
 }
 .docpaper:after{
- content:"ARXIU · BLANES · U-17";display:block;position:absolute;
+ content:"ARXIU · BLANES · CONFIDENCIAL";display:block;position:absolute;
  right:25px;top:75px;border:2px solid #9b4545;color:#9b4545;
  padding:7px 10px;font-size:.65rem;font-weight:900;
  letter-spacing:.12em;transform:rotate(9deg);opacity:.72
@@ -291,6 +291,9 @@ textarea{resize:vertical}
  .doclist{grid-template-columns:1fr 1fr}
  .phase-intro-screen{align-items:center}
 }
+
+.interrogation-row{display:flex;flex-direction:column;gap:7px;padding:10px 0;border-bottom:1px solid var(--line)}
+.interrogation-row .btn{text-align:left;white-space:normal;height:auto;min-height:44px}
 </style>
 </head>
 
@@ -358,27 +361,28 @@ textarea{resize:vertical}
    <div class="timeline" id="caseTimeline">
     <div class="timeline-item active">
      <div class="timeline-dot"></div>
-     <strong>00:30 h</strong><small>L'accident</small>
+     <strong>01:05 h</strong><small>Descoberta</small>
     </div>
     <div class="timeline-item">
      <div class="timeline-dot"></div>
-     <strong>L'endemà</strong><small>Sospitosos</small>
+     <strong>Acte 2</strong><small>Interrogatoris</small>
     </div>
     <div class="timeline-item">
      <div class="timeline-dot"></div>
-     <strong>Registres</strong><small>Proves</small>
+     <strong>Acte 3</strong><small>Secrets</small>
     </div>
     <div class="timeline-item">
      <div class="timeline-dot"></div>
-     <strong>Informe mèdic</strong><small>Autòpsia</small>
+     <strong>Acte 4</strong><small>La nit</small>
     </div>
     <div class="timeline-item">
      <div class="timeline-dot"></div>
-     <strong>Deliberació</strong><small>Resolució</small>
+     <strong>Acte 5</strong><small>Confrontació</small>
     </div>
+    <div class="timeline-item"><div class="timeline-dot"></div><strong>Acte 6</strong><small>Resolució</small></div>
    </div>
 
-   <p>Durant el concert del grup Eclipsi a l'Ensorra't, la vocalista Júlia Soler ha patit una descàrrega elèctrica al micròfon. Ha mort a l'hospital poc després. La primera hipòtesi és un accident, però les proves poden explicar una història diferent.</p>
+   <p>Després del concert de l’Ensorra’t a la Platja de la Vila, Júlia és trobada sense vida a la zona de camerinos. La nota trobada a la seva bossa i les versions dels quatre sospitosos obren una investigació per mort sospitosa.</p>
    <div class="notice">Objectiu: reconstruir què va passar, qui va provocar la mort i quin era el motiu.</div>
    <h3>Documents desbloquejats</h3>
    <div id="caseDocs" class="doclist"></div>
@@ -416,33 +420,42 @@ textarea{resize:vertical}
     <div class="suspect">
      <div class="portrait"><span>SUBJECT 01</span></div>
      <div class="name">Laia «The Voice»</div>
-     <p>Segona veu i amiga de la Júlia. Conflicte per una cançó i ambició de liderar el grup.</p>
-     <span class="tag">Mòbil aparent: rivalitat artística</span>
+     <p>Responsable artística. Volia més pes creatiu i havia discutit amb Júlia per una proposta finançada amb una partida qüestionada.</p>
+     <span class="tag">Secret: proposta artística</span>
     </div>
 
     <div class="suspect">
      <div class="portrait"><span>SUBJECT 02</span></div>
      <div class="name">Marc «Riff»</div>
-     <p>Guitarrista i exparella de la Júlia. Ruptura recent i una informació privada que la Júlia amenaçava de revelar.</p>
-     <span class="tag">Mòbil aparent: conflicte sentimental</span>
+     <p>Coordinador de producció. Havia validat factures sospitoses que Júlia havia decidit denunciar.</p>
+     <span class="tag">Secret: irregularitats econòmiques</span>
     </div>
 
     <div class="suspect">
      <div class="portrait"><span>SUBJECT 03</span></div>
      <div class="name">Nora</div>
-     <p>Admiradora obsessiva que va entrar a la zona de camerinos amb una acreditació no validada.</p>
-     <span class="tag">Mòbil aparent: obsessió i ressentiment</span>
+     <p>Col·laboradora de producció. Va consultar documents privats i va entrar a camerinos sense autorització.</p>
+     <span class="tag">Secret: accés no autoritzat</span>
     </div>
 
     <div class="suspect">
      <div class="portrait"><span>SUBJECT 04</span></div>
      <div class="name">Toni</div>
-     <p>Tècnic de so i llums. Factures irregulars i una incidència elèctrica que no va comunicar.</p>
-     <span class="tag">Mòbil aparent: ocultar una estafa</span>
+     <p>Tècnic. Va ocultar una incidència i va moure material sense actualitzar l’inventari.</p>
+     <span class="tag">Secret: negligència tècnica</span>
     </div>
 
    </div>
-   <p class="muted small">Els quatre tenen secrets i motius aparents. Cal distingir el responsable de la mort de qui va ocultar la deficiència tècnica.</p>
+   <p class="muted small">Els quatre tenen secrets, però només una cadena de proves permet identificar qui va provocar la mort.</p>
+  </div>
+ </section>
+
+ <section class="view" id="view-interrogations">
+  <div class="panel">
+   <div class="eyebrow">Declaracions compartides</div><h2>Interrogatoris</h2>
+   <p class="muted small">Tria una pregunta desbloquejada. Quan un participant la consulta, la resposta queda visible per a tothom.</p>
+   <div id="interrogationList"></div><p id="interrogationStatus" class="status" aria-live="polite"></p>
+   <h3>Preguntes ja consultades</h3><div id="answeredQuestions" class="doclist"></div>
   </div>
  </section>
 
@@ -464,29 +477,28 @@ textarea{resize:vertical}
      <label class="field" for="answerMethod">2. Quin mètode va provocar la mort?</label>
      <select id="answerMethod" required>
       <option value="">Tria una resposta</option>
-      <option>Intoxicació a través de la infusió</option>
-      <option>Descàrrega elèctrica provocada</option>
-      <option>Manipulació de la medicació</option>
+      <option>Intoxicació de la beguda del termo</option>
+      <option>Descàrrega elèctrica</option>
       <option>Una altra causa</option>
      </select>
 
      <label class="field" for="answerMotive">3. Quin era el veritable mòbil?</label>
      <select id="answerMotive" required>
       <option value="">Tria el mòbil</option>
-      <option>Evitar que la Júlia revelés una informació comprometedora sobre la seva vida privada</option>
-      <option>Venjança per la ruptura sentimental</option>
-      <option>Aconseguir el lloc de vocalista principal</option>
-      <option>Obsessionar-se amb la víctima</option>
-      <option>Evitar que es descobrís una estafa</option>
+      <option>Evitar que es descobrissin les irregularitats econòmiques</option>
+      <option>Rivalitat artística</option>
+      <option>Ocultar una negligència tècnica</option>
+      <option>Accés obsessiu a Júlia</option>
+      
      </select>
 
      <label class="field" for="answerProof">4. Quina és la prova més determinant?</label>
      <select id="answerProof" required>
       <option value="">Tria una prova</option>
-      <option>Registre d'accessos i fotografia de la Nora</option>
-      <option>Informe d'autòpsia i toxicologia</option>
-      <option>Objecte vinculat al Marc i marcador U-17</option>
-      <option>Factures i informe tècnic</option>
+      <option>Nota i comparació cal·ligràfica</option>
+      <option>Informe toxicològic i anàlisi del termo</option>
+      <option>Factures duplicades, missatge anònim i accés a camerinos</option>
+      <option>Fotografia de la figura i registre d’accessos</option>
      </select>
 
      <label class="field" for="answerExplanation">5. Reconstrucció del grup</label>
@@ -513,13 +525,13 @@ textarea{resize:vertical}
  <div id="solutionPanel" class="panel hidden">
   <div class="eyebrow">Revelació del cas</div>
   <h2>Què va passar realment?</h2>
-  <p>En Marc va intervenir en la infusió habitual de la Júlia. El motiu era impedir que ella revelés la seva relació sentimental secreta i altres detalls de la seva vida privada. El registre d'accés i la fotografia de la Nora el situen davant del camerino amb el termo a les 00:07; la coartada queda desmentida. La toxicologia identifica el marcador fictici U-17 tant en les mostres de la Júlia com en un recipient vinculat al Marc.</p>
-  <p>La descàrrega elèctrica va ser real, però no va causar la mort. En Toni havia ocultat una deficiència tècnica i n'és responsable, però no és l'autor de l'homicidi. La Laia i la Nora tenien motius i secrets que les feien sospitoses, però les proves no les vinculen amb la intoxicació.</p>
+  <p>En Marc va manipular la beguda del termo de Júlia per impedir que denunciés les irregularitats econòmiques que ell havia coordinat. Havia validat una de les factures duplicades i sabia que Júlia tenia proves. Va tornar a la zona de camerinos, va intervenir en les seves pertinences i va deixar una nota per simular una despedida. El missatge anònim, el registre d’accés, la fotografia, les coincidències de la jaqueta i els documents econòmics formen una cadena coherent.</p>
+  <p>La Laia havia discutit amb Júlia, però desconeixia l’origen irregular dels diners. Nora havia accedit a documents i a camerinos, però no va manipular la beguda. Toni va ocultar una incidència tècnica i va falsejar l’inventari, però no hi ha proves que intervingués en el termo. La mort va ser causada per la intoxicació, no per la incidència tècnica.</p>
   <div id="groupAnswerResult" class="notice small"></div>
  </div>
 </section>
 
-<p class="footnote">Prototip v1 · La història, els personatges, la planta umbràlia i el marcador U-17 són ficticis.</p>
+<p class="footnote">Prototip v1 · La història, els personatges, els documents i els personatges són ficticis.</p>
 </main>
 
 <nav class="tabs hidden" id="bottomTabs">
@@ -527,6 +539,7 @@ textarea{resize:vertical}
   <button class="tab active" data-view="case"><span>▣</span>Cas</button>
   <button class="tab" data-view="evidence"><span>⌕</span>Proves</button>
   <button class="tab" data-view="suspects"><span>♙</span>Sospitosos</button>
+  <button class="tab" data-view="interrogations"><span>☷</span>Interrogatoris</button>
   <button class="tab" data-view="accuse"><span>✓</span>Resolució</button>
  </div>
 </nav>
@@ -561,35 +574,12 @@ const SUPABASE_URL='https://ovdsxussbwshusirgmfy.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_nwXE9hF1Nh3Dg2QiCRFRTg_COdbv98b';
 
 const phases=[
- ['accident',"L'accident",'La primera hipòtesi és una descàrrega elèctrica durant el concert.',"00:30 h · Platja de Blanes",[
-  "El concert d’Eclipsi arriba al moment culminant. La platja és plena i la Júlia Soler, la veu principal del grup, s’acosta al micròfon per començar l’última cançó.",
-  "Un espetec sec interromp la música. La Júlia cau a l’escenari. Durant uns segons, el públic no entén què ha passat; després, l’equip d’emergències obre pas entre la gent i els tècnics tallen el so.",
-  "La Júlia és traslladada a l’hospital. Hores més tard se’n comunica la mort. La primera explicació apunta a una descàrrega elèctrica, però l’escenari, els testimonis i els moviments entre bastidors encara s’han de reconstruir."
- ],'La primera pregunta és si realment va ser un accident tècnic… o si algú va aprofitar el caos del concert.' ],
-
- ['sospitosos','Els sospitosos','Els testimonis i els conflictes personals obren diverses línies d’investigació.','L’endemà · Declaracions i primers interrogatoris',[
-  "La notícia de la mort de la Júlia ha arribat als membres d’Eclipsi i al personal del festival. Les primeres declaracions no coincideixen del tot: cadascú recorda una discussió, un moviment o una absència diferent.",
-  "La Laia, en Marc, la Nora i en Toni tenien motius per estar enfadats amb la Júlia. Alguns reconeixen els conflictes; d’altres ometen detalls que només apareixen quan es comparen els testimonis.",
-  "Cap d’ells no queda descartat. La investigació ha de separar els ressentiments reals de les oportunitats concretes i comprovar què feia cadascú durant els minuts previs al col·lapse."
- ],'Qui tenia un motiu? I, sobretot, qui podia haver actuat sense ser vist?' ],
-
- ['proves','Les proves','Els registres, les fotografies i els informes tècnics permeten contrastar les coartades.','Reconstrucció horària · Zona de camerinos i escenari',[
-  "La revisió de l’espai i dels materials recuperats aporta una imatge més precisa de la nit. Apareixen registres d’accés, fotografies preses entre bastidors, missatges i documents relacionats amb l’organització del concert.",
-  "Algunes coartades comencen a trontollar. Una fotografia aparentment casual adquireix importància quan es compara amb els horaris; un avís tècnic revela que una incidència ja era coneguda abans de l’actuació.",
-  "Però les proves no expliquen encara per què Júlia va morir. Cal distingir l’incident elèctric de qualsevol altra cosa que pogués haver passat al camerino."
- ],'Ordeneu els horaris i busqueu contradiccions: qui menteix sobre on era i què intenta amagar?' ],
-
- ['autopsia',"L'autòpsia",'La causa de la mort canvia la direcció de la investigació.','Informe mèdic · Resultats posteriors a l’autòpsia',[
-  "Arriba l’informe que faltava. La descàrrega elèctrica va existir, però les lesions observades no expliquen la mort de la Júlia. La hipòtesi inicial, que havia centrat tota la investigació, deixa de ser suficient.",
-  "Les anàlisis toxicològiques detecten un marcador fictici, U-17, en les mostres examinades. La investigació es desplaça cap a la infusió que la Júlia acostumava a prendre abans de sortir a l’escenari.",
-  "Ara cal revisar les proves anteriors amb una pregunta nova: qui coneixia aquest hàbit, qui podia accedir a les seves coses i quina evidència vincula la substància amb una persona concreta?"
- ],'La descàrrega va ser una distracció —i potser també un delicte independent. La causa de la mort és una altra.' ],
-
- ['resolucio','La resolució','El grup debat i l’organitzador registra una única resposta col·lectiva.','Deliberació final · Totes les proves disponibles',[
-  "Totes les línies d’investigació ja són sobre la taula. Els quatre sospitosos tenen secrets, però no tots els secrets expliquen la mort de la Júlia.",
-  "Abans de respondre, el grup ha de reconstruir la seqüència completa: què va provocar el col·lapse a l’escenari, què va causar realment la mort i qui va tenir l’oportunitat d’intervenir en la infusió.",
-  "Debateu les proves i acordeu una única teoria. Quan el grup estigui preparat, l’organitzador registrarà la resposta consensuada i es podrà llegir la resolució oficial."
- ],'No n’hi ha prou amb identificar qui menteix. Cal explicar qui va matar la Júlia, com ho va fer i quin era el mòbil.' ]
+ ['accident','La descoberta','La mort de la Júlia obre una investigació que, d’entrada, sembla vinculada al concert.','01:05 h · Zona de camerinos · Platja de la Vila',["Després dels focs artificials i del concert de l’Ensorra’t, la Júlia és trobada sense vida a la zona de camerinos. No hi ha lesions externes evidents que expliquin la mort.","Al seu costat hi ha les seves pertinences i un termo personal. En escorcollar la bossa, els investigadors hi troben una nota que sembla una despedida.","Quatre persones del seu entorn tenien conflictes amb ella. Les primeres declaracions són incompletes i cal reconstruir què va passar durant la nit."],'La nota explica realment què va passar, o algú vol que ho sembli?'],
+ ['sospitosos','Primers interrogatoris','Les relacions personals i els primers documents obren quatre línies d’investigació.','Declaracions inicials · Laia, Nora, Toni i Marc',["Laia i Júlia havien discutit per una proposta artística. Nora havia accedit a documents privats. Toni havia ocultat una incidència tècnica i Marc havia participat en la coordinació de la producció.","Cadascú té una explicació per als seus moviments i una raó per no explicar-ho tot. Les primeres preguntes permeten contrastar les versions sense donar per fet que mentir equival a matar.","Els primers documents mostren conflictes diferents: rivalitat artística, accés no autoritzat, negligència tècnica i possibles irregularitats econòmiques."],'Quin secret intenta protegir cadascú?'],
+ ['secrets','Secrets i contradiccions','Els documents privats i les primeres respostes revelen què amagava cadascú.','Documents interns · Pressupostos i inventari',["La proposta artística de la Laia estava vinculada a una partida pressupostària qüestionada per Júlia. La Nora havia trobat el seu nom en un registre d’accés i volia entendre per què.","Toni havia mogut material de reserva sense actualitzar l’inventari. Mentrestant, Júlia havia localitzat dues factures sospitoses i havia anunciat que les faria arribar a l’organització després del concert.","La conversa entre Júlia i Marc dos dies abans de l’actuació introdueix una pressió concreta: ella havia identificat qui havia autoritzat les operacions."],'Qui tenia més a perdre si Júlia lliurava els documents?'],
+ ['nit','La nit del concert','Fotografies, registres i testimonis permeten reconstruir els moviments entre bastidors.','00:15–00:35 h · Zona restringida',["Una fotografia de les 00:25 mostra una figura a prop de les pertinences de Júlia. La cara no és visible, però hi ha un detall a la màniga que pot ser rellevant.","El registre situa Marc i Nora a la zona de camerinos en una franja que se solapa. Nora explica que va veure una figura de roba fosca, però no en va distingir la cara ni pot afirmar què feia amb el termo.","Un missatge anònim rebut per Júlia a les 23:45 li demanava que esperés per parlar en privat. La toxicologia preliminar confirma que la beguda és una línia d’investigació."],'Qui va tenir accés a les pertinences de Júlia i en quin moment?'],
+ ['confrontacio','La confrontació','Les proves materials i les contradiccions permeten posar a prova les versions dels sospitosos.','Segona ronda · Resultats forenses',["Toni admet finalment la incidència tècnica i els moviments de material. Nora reconeix l’accés als documents i a la zona de camerinos. Cap dels dos fets, per si sol, explica la mort.","La fotografia ampliada mostra un fil clar descosit a la màniga de la figura. Una altra imatge de Marc mostra una reparació molt semblant a la seva jaqueta, però la coincidència no és concloent.","L’informe toxicològic confirma la substància a la beguda i a les mostres de Júlia. El termo presenta indicis compatibles amb una neteja recent, però no es pot identificar qui la va fer."],'Quines proves independents es reforcen mútuament?'],
+ ['resolucio','La resolució','Totes les proves són disponibles. El grup ha de formular una única acusació.','Deliberació final · Acte 6',["La línia econòmica ja no és una sospita vaga: dues factures comparteixen període, descripcions i referències internes, i una va ser validada amb les credencials de Marc.","La línia anònima es vincula tècnicament a un dispositiu utilitzat anteriorment per Marc. El registre complet confirma l’ús de la seva credencial per accedir a camerinos, però no identifica físicament qui la duia.","La nota, el missatge, els registres, la fotografia, les factures i les declaracions s’han de valorar conjuntament. Cap indici aïllat resol el cas; la força és en la cadena completa."],'Qui va matar Júlia, com ho va fer i què volia impedir?']
 ];
 
 let roomTimer=null,gameTimer=null,lastState=null,docs=[],lastRenderedPhase=null;
@@ -761,6 +751,7 @@ function renderState(s){
 
  lastState=s;
  docs=incoming;
+ renderInterrogations(s);
 
  if(s.status==='waiting'){
   $('gamePanel').classList.add('hidden');
@@ -809,7 +800,7 @@ function renderState(s){
  );
 
  $('nextPhaseBtn').disabled=false;
- $('nextPhaseBtn').textContent=idx===3?'Obrir formulari final':'Desbloquejar fase següent';
+ $('nextPhaseBtn').textContent=idx===4?'Obrir formulari final':'Desbloquejar fase següent';
 
  $('resolutionFormWrap').classList.toggle(
   'hidden',
@@ -822,7 +813,7 @@ function renderState(s){
  );
 
  $('participantWait').textContent=s.phase!=='resolucio'
-  ?'El formulari s’obrirà quan l’organitzador desbloquegi la cinquena fase.'
+  ?'El formulari s’obrirà quan l’organitzador desbloquegi la sisena fase.'
   :(s.group_resolution?'La resposta del grup ja s’ha registrat.':'L’organitzador està preparant la resposta consensuada.');
 
  $('resolutionSubmitted').classList.toggle('hidden',!s.group_resolution);
@@ -834,9 +825,9 @@ function renderState(s){
 
   const correct=[
    r.suspect==='Marc',
-   r.method==='Intoxicació a través de la infusió',
-   r.motive==='Evitar que la Júlia revelés una informació comprometedora sobre la seva vida privada',
-   r.decisive_evidence==='Objecte vinculat al Marc i marcador U-17'
+   r.method==='Intoxicació de la beguda del termo',
+   r.motive==='Evitar que es descobrissin les irregularitats econòmiques',
+   r.decisive_evidence==='Factures duplicades, missatge anònim i accés a camerinos'
   ].filter(Boolean).length;
 
   $('groupAnswerResult').textContent=`Resposta del grup: ${r.suspect} · ${r.method} · ${r.motive}.
@@ -849,6 +840,27 @@ Resultat del test: ${correct}/4 respostes correctes.`;
 
  $('bottomTabs').classList.remove('hidden');
  $('gamePanel').classList.remove('hidden');
+}
+
+const interrogations={"Laia":[["L01",2,"Quina relació professional tenies amb Júlia?","Érem companyes de producció artística. Jo volia assumir més responsabilitats creatives, però les decisions finals continuaven passant per ella."],["L02",2,"Vau discutir la nit del concert?","Sí. A les 22:00 vam discutir perquè Júlia qüestionava una proposta artística que jo havia presentat."],["L03",2,"Què li vas dir durant la discussió?","Li vaig dir que estava cansada que em prometessin oportunitats i després ella ho decidís tot."],["L04",2,"Vas enviar-li un missatge amenaçador?","Vaig escriure que no em quedaria de braços plegats i que aquella nit s’acabaria la seva sort. Era una expressió de ràbia per la meva carrera, no una amenaça de mort."],["L05",3,"Què volies dir amb “s’acabarà la seva sort”?","Que deixaria de permetre que s’apropiés de les meves idees. No tenia cap pla per fer-li mal."],["L06",3,"Sabies que la proposta estava vinculada a una partida qüestionada?","No. Marc em va dir que el pressupost estava aprovat. No sabia que hi havia factures duplicades ni que els imports no estaven justificats."],["L07",4,"Vas parlar amb Júlia després del concert?","No. Després de l’actuació vaig quedar a la zona principal. No vaig entrar a camerinos."],["L08",5,"Júlia t’havia acusat de beneficiar-te d’una despesa irregular?","Em va demanar que expliqués d’on sortia el material. Jo no sabia que l’origen fos irregular i em vaig sentir humiliada."],["L09",5,"Tenies algun motiu per impedir que Júlia parlés?","Volia que reconegués la meva feina, però no tenia res a guanyar amb la seva mort. La proposta artística no depenia que ella desaparegués."]],"Nora":[["N01",2,"Quina relació tenies amb Júlia?","Col·laborava puntualment amb la producció i tenia accés a alguns documents. La relació s’havia refredat."],["N02",2,"Per què et preocupava la informació de producció?","Vaig veure que el meu nom apareixia en un registre d’accés i volia saber per què. Em feia por que em responsabilitzessin d’alguna cosa."],["N03",2,"Vas consultar documents privats de Júlia?","No recordo haver obert cap carpeta seva. No vaig modificar cap document."],["N04",3,"El registre mostra que vas obrir la carpeta privada a les 22:35.","Vaig utilitzar el meu accés per consultar-la. Volia entendre per què hi sortia el meu nom. No vaig canviar res."],["N05",3,"Vas detectar les factures duplicades?","Vaig veure documents de pressupost, però no vaig entendre l’abast de les diferències. No vaig investigar qui les havia autoritzat."],["N06",3,"Vas entrar a la zona de camerinos durant el concert?","No hi vaig entrar per parlar amb Júlia. No volia que em veiés després del que havia passat."],["N07",4,"Vas parlar amb Júlia després de l’actuació?","No. No vaig arribar a parlar amb ella aquella nit."],["N08",4,"Per què vas ocultar els accessos?","Sabia que no tenia permís per consultar els seus documents. Tenia por de perdre la feina."],["N09",5,"Vas entrar a camerinos a les 00:30?","Sí. Vaig entrar i vaig sortir a les 00:32. No volia que em descobrissin."],["N10",5,"Què vas veure a prop de les pertinences de Júlia?","Una figura amb roba fosca, a prop de la taula. No li vaig veure la cara. No puc dir si tocava el termo ni què tenia a les mans."]],"Toni":[["T01",2,"Quina era la teva funció aquella nit?","Era responsable del suport tècnic i de coordinar el material de so i llums."],["T02",2,"Hi va haver cap incidència abans del concert?","Una fallada menor en un equip de reserva. Vaig pensar que la podia resoldre sense aturar la preparació."],["T03",2,"Vas moure material aquella nit?","Vaig fer alguns canvis d’equipament. No tots van quedar anotats al registre."],["T04",2,"Júlia et va demanar explicacions?","Sí. Em va preguntar per una discrepància d’inventari i em va dir que no volia més omissions."],["T05",3,"Per què l’inventari no coincideix amb el material trobat?","Vaig substituir una unitat per una de reserva i no vaig actualitzar el document. Va ser una negligència meva."],["T06",3,"Vas entrar a la zona tècnica restringida?","Sí, diverses vegades. Era part de la meva feina. Aquests accessos no són accessos al camerino de Júlia."],["T07",4,"Vas entrar al backstage de Júlia?","No. Vaig treballar a la zona tècnica i no vaig tocar les seves pertinences."],["T08",4,"Què sabia Júlia de la incidència?","Sabia que hi havia hagut una fallada i que jo no l’havia documentat correctament."],["T09",5,"Admetes que vas ocultar la incidència i el canvi de material?","Sí. Vaig moure l’equip de reserva sense deixar-ne constància i vaig evitar comunicar la incidència. Volia evitar que em retiressin del servei."],["T10",5,"Vas manipular el termo o la beguda de Júlia?","No. No tenia cap motiu per fer-ho i no hi ha cap registre que em situï a les seves pertinences."]],"Marc":[["M01",2,"Quina relació tenies amb Júlia?","Érem companys de producció i músics del mateix projecte. La relació professional era correcta."],["M02",2,"Vas parlar amb Júlia durant el concert?","Sí, cap a les 23:25. Vam parlar breument al lateral de l’escenari."],["M03",2,"De què vau parlar?","De qüestions de producció. No recordo cap discussió important."],["M04",2,"Hi havia algun conflicte entre vosaltres?","No més enllà de desacords normals de feina. No tenia cap motiu per fer-li mal."],["M05",3,"Sabies que Júlia revisava les factures?","Sabia que estava revisant part de la documentació de producció, però no que hagués trobat cap problema concret."],["M06",3,"Vas enviar-li un missatge perquè no expliqués res?","No recordo haver-li enviat cap missatge d’aquest tipus. No tenia cap raó per fer-ho."],["M07",3,"Vas tornar a la zona de camerinos després de les 00:15?","No. Després de parlar amb ella vaig quedar a la zona principal del concert."],["M08",4,"Vas enviar el missatge anònim de les 23:45?","No. No conec aquesta línia ni sé qui podia haver-li escrit."],["M09",4,"Coneixies el passadís i els accessos de camerinos?","Sí, com a coordinador podia moure’m per les zones de producció, però no vaig entrar al camerino de Júlia."],["M10",4,"Hi havia cap problema econòmic a la producció?","No que jo sàpiga. Les factures passaven per diversos responsables i jo no controlava tots els pagaments."],["M11",5,"Per què les teves credencials validen una de les factures duplicades?","Les meves credencials s’utilitzaven per tramitar documentació. No puc descartar que algú les fes servir en una gestió compartida."],["M12",5,"El registre situa la teva targeta a camerinos entre les 00:15 i les 00:35.","El registre identifica una targeta, no qui la duia. Algú podria haver-la agafat o utilitzat sense que jo ho sabés."],["M13",6,"La fotografia mostra una reparació semblant a la màniga de la teva jaqueta.","És una reparació comuna. La fotografia no mostra la cara i no demostra que fos jo."],["M14",6,"Com expliques el missatge anònim, la nota, les factures i l’accés?","No accepto aquesta interpretació. La línia no està al meu nom, l’anàlisi de la nota no és concloent i el registre només identifica una targeta. Les factures les revisaven diverses persones."]]};
+
+
+function renderInterrogations(s){
+ const root=$('interrogationList'); if(!root)return; root.replaceChildren();
+ const unlocked=s.phase==='accident'?1:s.phase==='sospitosos'?2:s.phase==='secrets'?3:s.phase==='nit'?4:s.phase==='confrontacio'?5:6;
+ Object.entries(interrogations).forEach(([suspect,qs])=>{
+  const box=document.createElement('div');box.className='panel';
+  const h=document.createElement('h3');h.textContent=suspect;box.append(h);
+  qs.filter(q=>q[1]<=unlocked).forEach(q=>{
+   const row=document.createElement('div');row.className='interrogation-row';
+   const b=document.createElement('button');b.className='btn secondary';b.textContent=q[0]+' · '+q[2];
+   const done=(s.interrogation_answers||[]).find(a=>a.question_id===q[0]);
+   if(done){b.disabled=true;b.textContent+=' ✓';const a=document.createElement('p');a.className='notice small';a.textContent=done.answer;row.append(b,a);}
+   else{b.onclick=async()=>{b.disabled=true;$('interrogationStatus').textContent='Registrant la pregunta…';const c=creds();try{await api('consultar-interrogatori',{game_id:c.game_id,player_id:c.player_id,player_token:c.player_token,question_id:q[0],suspect,question:q[2],answer:q[3]});$('interrogationStatus').textContent='Resposta compartida amb tots els participants.';await refreshState();}catch(e){b.disabled=false;$('interrogationStatus').textContent=e.message;}};row.append(b);}
+   box.append(row);
+  });root.append(box);
+ });
+ const answered=$('answeredQuestions');answered.replaceChildren();(s.interrogation_answers||[]).forEach(a=>{const d=document.createElement('div');d.className='doc';d.textContent=a.question_id+' · '+a.suspect+': '+a.question+' — '+a.answer;answered.append(d);});
 }
 
 async function refreshState(){
