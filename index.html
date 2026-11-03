@@ -293,6 +293,10 @@ textarea{resize:vertical}
 }
 
 .interrogation-row{display:flex;flex-direction:column;gap:7px;padding:10px 0;border-bottom:1px solid var(--line)}
+.interrogation-suspect-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:16px 0}
+.interrogation-suspect-tab{border:1px solid var(--line);background:#211d22;color:var(--muted);padding:11px 5px;border-radius:7px;font-weight:600}
+.interrogation-suspect-tab.active{background:#3a2d28;border-color:var(--gold);color:var(--text)}
+.interrogation-suspect-panel{min-height:120px}
 .interrogation-row .btn{text-align:left;white-space:normal;height:auto;min-height:44px}
 </style>
 </head>
@@ -462,8 +466,10 @@ textarea{resize:vertical}
   <div class="panel">
    <div class="eyebrow">Declaracions compartides</div><h2>Interrogatoris</h2>
    <p class="muted small">Tria una pregunta desbloquejada. Quan un participant la consulta, la resposta queda visible per a tothom.</p>
-   <div id="interrogationList"></div><p id="interrogationStatus" class="status" aria-live="polite"></p>
-   <h3>Preguntes ja consultades</h3><div id="answeredQuestions" class="doclist"></div>
+   <div id="interrogationSuspectTabs" class="interrogation-suspect-tabs" aria-label="Tria el personatge"></div>
+   <div id="interrogationSuspectPanel" class="interrogation-suspect-panel"></div>
+   <p id="interrogationStatus" class="status" aria-live="polite"></p>
+   <h3>Respostes compartides</h3><p class="muted small">Aquí apareixen totes les respostes que ja ha consultat qualsevol participant.</p><div id="answeredQuestions" class="doclist"></div>
   </div>
  </section>
 
@@ -859,22 +865,42 @@ Resultat del test: ${correct}/4 respostes correctes.`;
 const interrogations={"Laia":[["L01",2,"Quina relació professional tenies amb Júlia?","Érem companyes de producció artística. Jo volia assumir més responsabilitats creatives, però les decisions finals continuaven passant per ella."],["L02",2,"Vau discutir la nit del concert?","Sí. A les 22:00 vam discutir perquè Júlia qüestionava una proposta artística que jo havia presentat."],["L03",2,"Què li vas dir durant la discussió?","Li vaig dir que estava cansada que em prometessin oportunitats i després ella ho decidís tot."],["L04",2,"Vas enviar-li un missatge amenaçador?","Vaig escriure que no em quedaria de braços plegats i que aquella nit s’acabaria la seva sort. Era una expressió de ràbia per la meva carrera, no una amenaça de mort."],["L05",3,"Què volies dir amb “s’acabarà la seva sort”?","Que deixaria de permetre que s’apropiés de les meves idees. No tenia cap pla per fer-li mal."],["L06",3,"Sabies que la proposta estava vinculada a una partida qüestionada?","No. Marc em va dir que el pressupost estava aprovat. No sabia que hi havia factures duplicades ni que els imports no estaven justificats."],["L07",4,"Vas parlar amb Júlia després del concert?","No. Després de l’actuació vaig quedar a la zona principal. No vaig entrar a camerinos."],["L08",5,"Júlia t’havia acusat de beneficiar-te d’una despesa irregular?","Em va demanar que expliqués d’on sortia el material. Jo no sabia que l’origen fos irregular i em vaig sentir humiliada."],["L09",5,"Tenies algun motiu per impedir que Júlia parlés?","Volia que reconegués la meva feina, però no tenia res a guanyar amb la seva mort. La proposta artística no depenia que ella desaparegués."]],"Nora":[["N01",2,"Quina relació tenies amb Júlia?","Col·laborava puntualment amb la producció i tenia accés a alguns documents. La relació s’havia refredat."],["N02",2,"Per què et preocupava la informació de producció?","Vaig veure que el meu nom apareixia en un registre d’accés i volia saber per què. Em feia por que em responsabilitzessin d’alguna cosa."],["N03",2,"Vas consultar documents privats de Júlia?","No recordo haver obert cap carpeta seva. No vaig modificar cap document."],["N04",3,"El registre mostra que vas obrir la carpeta privada a les 22:35.","Vaig utilitzar el meu accés per consultar-la. Volia entendre per què hi sortia el meu nom. No vaig canviar res."],["N05",3,"Vas detectar les factures duplicades?","Vaig veure documents de pressupost, però no vaig entendre l’abast de les diferències. No vaig investigar qui les havia autoritzat."],["N06",3,"Vas entrar a la zona de camerinos durant el concert?","No hi vaig entrar per parlar amb Júlia. No volia que em veiés després del que havia passat."],["N07",4,"Vas parlar amb Júlia després de l’actuació?","No. No vaig arribar a parlar amb ella aquella nit."],["N08",4,"Per què vas ocultar els accessos?","Sabia que no tenia permís per consultar els seus documents. Tenia por de perdre la feina."],["N09",5,"Vas entrar a camerinos a les 00:30?","Sí. Vaig entrar i vaig sortir a les 00:32. No volia que em descobrissin."],["N10",5,"Què vas veure a prop de les pertinences de Júlia?","Una figura amb roba fosca, a prop de la taula. No li vaig veure la cara. No puc dir si tocava el termo ni què tenia a les mans."]],"Toni":[["T01",2,"Quina era la teva funció aquella nit?","Era responsable del suport tècnic i de coordinar el material de so i llums."],["T02",2,"Hi va haver cap incidència abans del concert?","Una fallada menor en un equip de reserva. Vaig pensar que la podia resoldre sense aturar la preparació."],["T03",2,"Vas moure material aquella nit?","Vaig fer alguns canvis d’equipament. No tots van quedar anotats al registre."],["T04",2,"Júlia et va demanar explicacions?","Sí. Em va preguntar per una discrepància d’inventari i em va dir que no volia més omissions."],["T05",3,"Per què l’inventari no coincideix amb el material trobat?","Vaig substituir una unitat per una de reserva i no vaig actualitzar el document. Va ser una negligència meva."],["T06",3,"Vas entrar a la zona tècnica restringida?","Sí, diverses vegades. Era part de la meva feina. Aquests accessos no són accessos al camerino de Júlia."],["T07",4,"Vas entrar al backstage de Júlia?","No. Vaig treballar a la zona tècnica i no vaig tocar les seves pertinences."],["T08",4,"Què sabia Júlia de la incidència?","Sabia que hi havia hagut una fallada i que jo no l’havia documentat correctament."],["T09",5,"Admetes que vas ocultar la incidència i el canvi de material?","Sí. Vaig moure l’equip de reserva sense deixar-ne constància i vaig evitar comunicar la incidència. Volia evitar que em retiressin del servei."],["T10",5,"Vas manipular el termo o la beguda de Júlia?","No. No tenia cap motiu per fer-ho i no hi ha cap registre que em situï a les seves pertinences."]],"Marc":[["M01",2,"Quina relació tenies amb Júlia?","Érem companys de producció i músics del mateix projecte. La relació professional era correcta."],["M02",2,"Vas parlar amb Júlia durant el concert?","Sí, cap a les 23:25. Vam parlar breument al lateral de l’escenari."],["M03",2,"De què vau parlar?","De qüestions de producció. No recordo cap discussió important."],["M04",2,"Hi havia algun conflicte entre vosaltres?","No més enllà de desacords normals de feina. No tenia cap motiu per fer-li mal."],["M05",3,"Sabies que Júlia revisava les factures?","Sabia que estava revisant part de la documentació de producció, però no que hagués trobat cap problema concret."],["M06",3,"Vas enviar-li un missatge perquè no expliqués res?","No recordo haver-li enviat cap missatge d’aquest tipus. No tenia cap raó per fer-ho."],["M07",3,"Vas tornar a la zona de camerinos després de les 00:15?","No. Després de parlar amb ella vaig quedar a la zona principal del concert."],["M08",4,"Vas enviar el missatge anònim de les 23:45?","No. No conec aquesta línia ni sé qui podia haver-li escrit."],["M09",4,"Coneixies el passadís i els accessos de camerinos?","Sí, com a coordinador podia moure’m per les zones de producció, però no vaig entrar al camerino de Júlia."],["M10",4,"Hi havia cap problema econòmic a la producció?","No que jo sàpiga. Les factures passaven per diversos responsables i jo no controlava tots els pagaments."],["M11",5,"Per què les teves credencials validen una de les factures duplicades?","Les meves credencials s’utilitzaven per tramitar documentació. No puc descartar que algú les fes servir en una gestió compartida."],["M12",5,"El registre situa la teva targeta a camerinos entre les 00:15 i les 00:35.","El registre identifica una targeta, no qui la duia. Algú podria haver-la agafat o utilitzat sense que jo ho sabés."],["M13",6,"La fotografia mostra una reparació semblant a la màniga de la teva jaqueta.","És una reparació comuna. La fotografia no mostra la cara i no demostra que fos jo."],["M14",6,"Com expliques el missatge anònim, la nota, les factures i l’accés?","No accepto aquesta interpretació. La línia no està al meu nom, l’anàlisi de la nota no és concloent i el registre només identifica una targeta. Les factures les revisaven diverses persones."]]};
 
 
+let activeInterrogationSuspect='Laia';
+
 function renderInterrogations(s){
- const root=$('interrogationList'); if(!root)return; root.replaceChildren();
+ const tabs=$('interrogationSuspectTabs');
+ const panel=$('interrogationSuspectPanel');
+ if(!tabs||!panel)return;
  const unlocked=s.phase==='accident'?1:s.phase==='sospitosos'?2:s.phase==='secrets'?3:s.phase==='nit'?4:s.phase==='confrontacio'?5:6;
- Object.entries(interrogations).forEach(([suspect,qs])=>{
-  const box=document.createElement('div');box.className='panel';
-  const h=document.createElement('h3');h.textContent=suspect;box.append(h);
-  qs.filter(q=>q[1]<=unlocked).forEach(q=>{
-   const row=document.createElement('div');row.className='interrogation-row';
-   const b=document.createElement('button');b.className='btn secondary';b.textContent=q[0]+' · '+q[2];
-   const done=(s.interrogation_answers||[]).find(a=>a.question_id===q[0]);
-   if(done){b.disabled=true;b.textContent+=' ✓';const a=document.createElement('p');a.className='notice small';a.textContent=done.answer;row.append(b,a);}
-   else{b.onclick=async()=>{b.disabled=true;$('interrogationStatus').textContent='Registrant la pregunta…';const c=creds();try{await api('consultar-interrogatori',{game_id:c.game_id,player_id:c.player_id,player_token:c.player_token,question_id:q[0],suspect,question:q[2],answer:q[3]});$('interrogationStatus').textContent='Resposta compartida amb tots els participants.';await refreshState();}catch(e){b.disabled=false;$('interrogationStatus').textContent=e.message;}};row.append(b);}
-   box.append(row);
-  });root.append(box);
+ tabs.replaceChildren();
+ Object.keys(interrogations).forEach(suspect=>{
+  const b=document.createElement('button');
+  b.type='button';b.className='interrogation-suspect-tab'+(activeInterrogationSuspect===suspect?' active':'');
+  const availableCount=interrogations[suspect].filter(q=>q[1]<=unlocked).length;
+  const answeredCount=interrogations[suspect].filter(q=>q[1]<=unlocked&&(s.interrogation_answers||[]).some(a=>a.question_id===q[0])).length;
+  b.textContent=suspect+' · '+answeredCount+'/'+availableCount;b.setAttribute('aria-pressed',String(activeInterrogationSuspect===suspect));
+  b.onclick=()=>{activeInterrogationSuspect=suspect;renderInterrogations(s);};
+  tabs.append(b);
  });
- const answered=$('answeredQuestions');answered.replaceChildren();(s.interrogation_answers||[]).forEach(a=>{const d=document.createElement('div');d.className='doc';d.textContent=a.question_id+' · '+a.suspect+': '+a.question+' — '+a.answer;answered.append(d);});
+ panel.replaceChildren();
+ const qs=interrogations[activeInterrogationSuspect]||[];
+ const box=document.createElement('div');box.className='panel';
+ const h=document.createElement('h3');h.textContent='Interrogatori de '+activeInterrogationSuspect;box.append(h);
+ const available=qs.filter(q=>q[1]<=unlocked);
+ if(!available.length){const p=document.createElement('p');p.className='muted small';p.textContent='Les preguntes d’aquest personatge encara no estan desbloquejades.';box.append(p);}
+ available.forEach(q=>{
+  const row=document.createElement('div');row.className='interrogation-row';
+  const b=document.createElement('button');b.type='button';b.className='btn secondary';b.textContent=q[0]+' · '+q[2];
+  const done=(s.interrogation_answers||[]).find(a=>a.question_id===q[0]);
+  if(done){b.disabled=true;b.textContent+=' ✓';const note=document.createElement('span');note.className='muted small';note.textContent='Resposta disponible a les respostes compartides.';row.append(b,note);}
+  else{b.onclick=async()=>{b.disabled=true;$('interrogationStatus').textContent='Registrant la pregunta…';const c=creds();try{await api('consultar-interrogatori',{game_id:c.game_id,player_id:c.player_id,player_token:c.player_token,question_id:q[0],suspect:activeInterrogationSuspect,question:q[2],answer:q[3]});$('interrogationStatus').textContent='Resposta compartida amb tots els participants.';await refreshState();}catch(e){b.disabled=false;$('interrogationStatus').textContent=e.message;}};row.append(b);}
+  box.append(row);
+ });
+ panel.append(box);
+ const answered=$('answeredQuestions');answered.replaceChildren();
+ const shared=s.interrogation_answers||[];
+ if(!shared.length){const empty=document.createElement('p');empty.className='muted small';empty.textContent='Encara no s’ha consultat cap pregunta.';answered.append(empty);}
+ shared.forEach(a=>{const d=document.createElement('div');d.className='doc';d.textContent=a.question_id+' · '+a.suspect+': '+a.question+' — '+a.answer;answered.append(d);});
 }
 
 async function refreshState(){
