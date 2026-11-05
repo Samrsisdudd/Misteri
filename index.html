@@ -304,13 +304,21 @@ textarea{resize:vertical}
 .interrogation-suspect-tab.active{background:#3a2d28;border-color:var(--gold);color:var(--text)}
 .interrogation-suspect-panel{min-height:120px}
 .interrogation-row .btn{text-align:left;white-space:normal;height:auto;min-height:44px}
+
+/* Portada visual del joc */
+.hero-cover{max-width:900px;margin:0 auto;padding:14px 14px 0;position:relative;z-index:1}
+.hero-cover img{display:block;width:100%;height:auto;max-height:72vh;object-fit:cover;object-position:center;border:1px solid #685056;border-radius:8px;box-shadow:0 18px 48px #0009}
+@media(min-width:700px){.hero-cover{padding-left:22px;padding-right:22px}}
+
 </style>
 </head>
 
 <body>
+<div class="hero-cover" aria-label="Portada del joc">
+ <img src="ensorrat-portada.png" alt="Concert nocturn a la platja de Blanes amb focs artificials i el títol L’últim concert de l’Ensorra’t">
+</div>
 <header>
  <div class="eyebrow">Expedient d'investigació · Blanes</div>
- <h1 class="brand">L'últim concert<br>de l'Ensorra't</h1>
  <p class="subtitle">La mort de la Júlia Soler · Una investigació compartida</p>
 </header>
 
